@@ -43,18 +43,19 @@ const Admin = () => {
 
 
 
- /*    //! Objekt finden dass den title hat, den man ins Input eingegeben hat
-    const resultFilter = moebel?.filter(object => {
-        //Prüfe ob zunächst object.title und inputValue Werte haben
-        if (object.userID && inputValue) {
-            //Prüfe ob der Titel vom Objekt den eingegebenen Wert vom Input enthält.
+    //! Objekt finden dass den title hat, den man ins Input eingegeben hat
+  const resultFilter = moebel?.filter(object => {
+        //Prüfe ob userID von dem Objekt mit dem aktuellen User überinstimmt
+      if (object.userID === user?._id) {
+
             //Falls ja, gib jedes Objekt das passt in ein Array (resultFilter)
-            return object.title?.toLowerCase().includes(inputValue.toLowerCase());
+            return object;
         } else {
             return false
         }
-    }) */
+    })
 
+console.log(resultFilter)
 
 
     //!Hier werden die Hinzugefügten Daten auch dargestellt
@@ -62,7 +63,7 @@ const Admin = () => {
         <>
             <Formular setRefresh={setRefresh} userID ={user?._id} />
             <div className="eintrag">
-                {moebel.map((moebel, index) => {
+                {resultFilter.map((moebel, index) => {
                     console.log(moebel);
                     return (
                         <div key={index}>
