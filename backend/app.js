@@ -6,6 +6,13 @@ import './config/config.js';
 //Importiert die Funktion "getDb" aus dem db.js Modul, die verwendet wird, um eine Verbindung zur MongoDB-Datenbank herzustellen.
 import { getDb } from './database/db.js';
 import { ObjectId } from 'mongodb';
+import cookieParser from 'cookie-parser'
+import { login, register, baseUser } from './controller/userController.js'
+import { encrypt, auth } from './middleware/auth.js'
+import { getUserProjects, addUserProject } from './controller/projectsController.js'
+
+
+
 
 const app = express();
 //Den Port holen wir aus der .env-Datei
@@ -13,9 +20,12 @@ const PORT = process.env.PORT;
 //Man braucht multer damit die FormData Daten aus dem Frontend ohne Probleme verwendet werden können
 const upload = multer({ dest: "./public" });
 
-
+app.use(cookieParser())
 //Der Browser blockt alle Adressen die auf den Server zugreifen wollen außer sich selbst. Mit Cors kann man das beheben
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true
+}))
 //Fügt die Middleware hinzu, die verwendet wird, um den Request-Body in ein JSON-Objekt zu parsen.
 app.use(express.json());
 //Hat etwas mit Multer und dem Bild zutun
@@ -92,6 +102,15 @@ app.delete('/api/moebel/:id', (req, res) => {
 })
 
 
+
+//?---- Routen die zum UserController gehoeren
+app.post('/api/login', encrypt, login)
+app.post('/api/register', encrypt, register)
+app.get('/api/user', baseUser)
+
+//?---- alle routen zum thema projekte
+app.get('/api/projects', auth, getUserProjects)
+app.post('/api/projects', auth, addUserProject) 
 
 
 
