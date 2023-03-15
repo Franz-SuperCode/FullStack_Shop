@@ -3,7 +3,7 @@ import { useState } from "react";
 function Formular(props) {
 //base64 ist das Format in dem Das Bild als String umgewandelt und an MongoDB geschickt wird
     const [base64, setBase64] = useState('');
-
+console.log("userid: ",props)
 
     const sendData = (e) => {
         e.preventDefault()
@@ -11,8 +11,11 @@ function Formular(props) {
         //Mit e.target bekommt man das <form>
         //Und dann packt man es in den body vom Request
         const form = new FormData(e.target);
-  // Add the base64-encoded image to the FormData object
+  // Add the base64-encoded image to the FormData object and the userID
   form.append("image", base64);
+  form.append("userID", props.userID);
+
+
         //Hier wird nun gefetched mit einem POST req an den Server
         fetch('http://localhost:9999/api/moebel', {
             method: 'POST',
