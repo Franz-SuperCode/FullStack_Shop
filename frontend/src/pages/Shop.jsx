@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { ThemeContext } from "../App";
 import filter from "../assets/img/filter.svg"
+import Header from "../components/header/Header";
 import ProductCard from "../components/productCard/ProductCard";
 
 
@@ -58,6 +59,7 @@ function Shop() {
 
     return (
         <main className="main_shop">
+                    <Header />
             <form>
                 <div>
                     <img alt="filter_img" src={filter} />

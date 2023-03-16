@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Formular from "../components/formular/Formular";
+import Header from "../components/header/Header";
 
 
 
@@ -61,6 +62,7 @@ console.log(resultFilter)
     //!Hier werden die Hinzugefügten Daten auch dargestellt
     return (
         <>
+                <Header />
             <Formular setRefresh={setRefresh} userID ={user?._id} />
             <div className="eintrag">
                 {resultFilter.map((moebel, index) => {

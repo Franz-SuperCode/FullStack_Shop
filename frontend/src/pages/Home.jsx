@@ -10,6 +10,7 @@ import flower6 from "../assets/img/flower6.svg";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Header from "../components/header/Header";
 
 function Home() {
 
@@ -58,9 +59,12 @@ function Home() {
 
 
     return (
+        <>
+        <Header/>
         <main className="main_home">
+                   
             <article>
-                <h1>Products, 🪑👕👜 what our Visitors need</h1>
+                <h1>Produkte, 🪑👕👜 die ... braucht</h1>
                 <p>Browse between hundrets of Cool Stuff</p>
                 <Link to="/shop"> <button>Explore</button> </Link>
             </article>
@@ -73,6 +77,7 @@ function Home() {
                 <img src={flower6} alt="flower6" />
             </Slider>
         </main>
+        </>
     );
 }
 

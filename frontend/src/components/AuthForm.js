@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "./AuthForm.css"
 
 const AuthForm = (props) => {
 
@@ -24,16 +25,36 @@ const AuthForm = (props) => {
 
         if (response.ok) register ? setRegister(false) : navigate('/dashboard')
 
-        // fetch(`${process.env.REACT_APP_BACKEND_URL}/${register?'register':'login'}`)
+
     }
     return (
-        <div>
-            <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="z.B. batman@gotham.gcpd" />
-            <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="sicheres Password" />
-            <button onClick={sendAuthentification}>{register ? 'Registrieren' : 'Login'}</button>
-            <p onClick={() => setRegister(prev => !prev)}>{register ? 'Du willst dich lieber einloggen?' : 'Magst du dich registrieren?'}</p>
+      <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title">Hotel Shop</div>
+        <div class="inputs">
+          <label>EMAIL</label>
+          <input
+            type="email"
+            placeholder="z.B. batman@gotham.de"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>PASSWORT</label>
+          <input
+            type="password"
+            placeholder="sicheres Passwort"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={sendAuthentification}>
+            {register ? "Registrieren" : "Login"}
+          </button>
+          <p className="text_acc" onClick={() => setRegister((prev) => !prev)}>
+            {register
+              ? "Account vorhanden?"
+              : "Noch keinen Account?"}
+          </p>
         </div>
-    )
+      </div>
+    );
 }
 
 export default AuthForm

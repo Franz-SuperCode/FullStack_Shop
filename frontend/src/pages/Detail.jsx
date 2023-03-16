@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductCard from "../components/productCard/ProductCard";
 import { ThemeContext } from "../App.js";
+import Header from "../components/header/Header";
 
 function Detail() {
   const theme = useContext(ThemeContext);
@@ -100,6 +101,7 @@ function Detail() {
 
   return (
     <>
+            <Header />
       {newData && (
         <ProductCard
           title={newData.title}

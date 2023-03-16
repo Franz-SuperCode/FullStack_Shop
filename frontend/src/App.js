@@ -10,7 +10,6 @@ import About from "./pages/About";
 import { createContext, useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-
 export const ThemeContext = createContext();
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
     <div className="App">
       <ThemeContext.Provider value={{ updatePage, setUpdatePage }}>
         <Router>
-          <Header />
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/admin" element={<Admin />} />

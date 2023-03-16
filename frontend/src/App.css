@@ -1,11 +1,17 @@
+@font-face {
+    font-family: Montserrat_Medium;
+    src: url("./assets/fonts/Montserrat-Medium.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 1.2rem;
+    font-family: Montserrat_Medium;
 }
 
-.App {}
+
 
 
 form {
@@ -85,4 +91,11 @@ form {
 
 .flowers img {
     width: 100%;
+}
+
+.loginPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/header/Header";
 import Projects from "../components/projects/Projects";
 
 const DashboardPage = () => {
@@ -26,6 +27,7 @@ const DashboardPage = () => {
 
   return (
     <main>
+              <Header />
       <h1>DashBoard</h1>
       {user && <p>E-Mail: {user.email}</p>}
 
