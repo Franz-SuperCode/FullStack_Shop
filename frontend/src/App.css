@@ -99,3 +99,9 @@ form {
     align-items: center;
     height: 100vh
 }
+
+.prodcut_picture{
+    width: 10%;
+    border-radius: 50px;
+
+}

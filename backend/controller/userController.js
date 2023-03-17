@@ -25,8 +25,12 @@ export const register = async (req, res) => {
     const user = {
         email: req.body.email,
         password: req.body.password,
+        name: req.body.name,
+        profilePicture: req.body.profilePicture,
         registeredAt: new Date()
     }
+
+
 
     const db = await getDb()
     const result = await db.collection('user').insertOne(user)

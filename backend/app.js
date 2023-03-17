@@ -10,13 +10,16 @@ import cookieParser from 'cookie-parser'
 import { login, register, baseUser } from './controller/userController.js'
 import { encrypt, auth } from './middleware/auth.js'
 import { getUserProjects, addUserProject } from './controller/projectsController.js'
-
+import bodyParser from "body-parser";
 
 
 
 const app = express();
 //Den Port holen wir aus der .env-Datei
 const PORT = process.env.PORT;
+// Erhöhe das Paketlimit auf 10 MB
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 //Man braucht multer damit die FormData Daten aus dem Frontend ohne Probleme verwendet werden können
 const upload = multer({ dest: "./public" });
 
@@ -30,6 +33,8 @@ app.use(cors({
 app.use(express.json());
 //Hat etwas mit Multer und dem Bild zutun
 app.use('/public', express.static('./public'));
+
+
 
 
 

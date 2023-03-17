@@ -27,12 +27,13 @@ const DashboardPage = () => {
 
   return (
     <main>
-              <Header />
+      <Header />
       <h1>DashBoard</h1>
       {user && <p>E-Mail: {user.email}</p>}
-
+      {user && <p>Name: {user.name}</p>}
+      {user && <img className="prodcut_picture" alt="prodcut_picture" src={user.profilePicture} />}
       {user && <p>User ID: {user._id}</p>}
-      <Projects setRefresh={setRefresh} refresh={refresh} userID ={user?._id} />
+      <Projects setRefresh={setRefresh} refresh={refresh} userID={user?._id} />
     </main>
   );
 };

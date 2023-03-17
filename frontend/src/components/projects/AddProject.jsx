@@ -27,7 +27,7 @@ const AddProject = (props) => {
             <button onClick={() => setExpand(prev => !prev)}>{expand ? '-' : '+'}</button>
             {expand ?
                 <>
-                    <input onChange={(e) => setProjectName(e.target.value)} type="text" placeholder="Wie nennst du das Projekt?" />
+                    <input onChange={(e) => setProjectName(e.target.value)} type="text" placeholder="Notitz hinzufügen" />
                     <button onClick={sendProject}>Projekt anlegen</button>
                 </> : null
 
